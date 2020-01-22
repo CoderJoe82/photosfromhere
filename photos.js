@@ -1,7 +1,10 @@
+const everyPictureYouWant = [];
+
 function illBeWatchingYou() {
     let illBeWatchingYouChecker = "";
     let everyBreathYouTakeYouTakeEveryMoveYouMake = ""
     let everyBondYouBreakEveryStepYouTake = "";
+
 
     function ohCantYouSeeYouBelongToMe(position) {
         illBeWatchingYouChecker = " you!";
@@ -15,8 +18,12 @@ function illBeWatchingYou() {
                 function constructImageUrl(photosToView) {
                     return `https://farm${photosToView.farm}.staticflickr.com/${photosToView.server}/${photosToView.id}_${photosToView.secret}.jpg`
                 }
+                for (i = 0; i < 5; i++) {
+                    everyPictureYouWant.push(constructImageUrl(data.photos.photo[i]));
+                }
                 const firstPictureIKnowYouWant = constructImageUrl(data.photos.photo[0]);
                 document.getElementById("imgSpot").src = firstPictureIKnowYouWant;
+
             });
     }
 
@@ -30,6 +37,9 @@ function illBeWatchingYou() {
                 function constructImageUrl(photosToView) {
                     return `https://farm${photosToView.farm}.staticflickr.com/${photosToView.server}/${photosToView.id}_${photosToView.secret}.jpg`
                 }
+                for (i = 0; i < 5; i++) {
+                    everyPictureYouWant.push(constructImageUrl(data.photos.photo[i]));
+                }
                 const firstPictureIKnowYouWant = constructImageUrl(data.photos.photo[0]);
                 document.getElementById("imgSpot").src = firstPictureIKnowYouWant;
             });
@@ -37,3 +47,15 @@ function illBeWatchingYou() {
     navigator.geolocation.getCurrentPosition(ohCantYouSeeYouBelongToMe, howMyPoorHeartAchesWithEveryStepYouTake);
 }
 illBeWatchingYou();
+let picture = 1;
+document.getElementById("nextButton").onclick = () => {
+    if (picture !== 4) {
+        document.getElementById("imgSpot").src = everyPictureYouWant[picture];
+        console.log(picture);
+        picture++;
+        console.log(picture);
+    } else {
+        document.getElementById("imgSpot").src = everyPictureYouWant[picture];
+        picture = 0;
+    }
+}
